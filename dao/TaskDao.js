@@ -13,10 +13,8 @@ exports.getByUserId = async (userId) => {
 
 exports.insert = async (text, userId) => {
     try {
-        const [result] = await db.query('INSERT INTO task (text, user_id) values (?, ?)', [
-            text,
-            userId,
-        ]);
+        const sql = 'INSERT INTO task (text, user_id) values (?, ?)';
+        const [result] = await db.query(sql, [text, userId]);
         return result;
     } catch (error) {
         logger.error(error);
@@ -26,14 +24,8 @@ exports.insert = async (text, userId) => {
 
 exports.update = async (text, isDone, id, userId) => {
     try {
-        const [
-            result,
-        ] = await db.query('UPDATE task SET text = ?, is_done = ? WHERE id = ? AND user_id = ?', [
-            text,
-            isDone,
-            id,
-            userId,
-        ]);
+        const sql = 'UPDATE task SET text = ?, is_done = ? WHERE id = ? AND user_id = ?';
+        const [result] = await db.query(sql, [text, isDone, id, userId]);
         return result;
     } catch (error) {
         logger.error(error);
@@ -43,10 +35,8 @@ exports.update = async (text, isDone, id, userId) => {
 
 exports.delete = async (id, userId) => {
     try {
-        const [result] = await db.query('DELETE FROM task WHERE id = ? AND user_id = ?', [
-            id,
-            userId,
-        ]);
+        const sql = 'DELETE FROM task WHERE id = ? AND user_id = ?';
+        const [result] = await db.query(sql, [id, userId]);
         return result;
     } catch (error) {
         logger.error(error);
