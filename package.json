@@ -1,0 +1,33 @@
+{
+  "name": "todo-app",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "start:dev": "cross-env NODE_ENV=development nodemon -r dotenv/config app.js",
+    "start:prod": "cross-env NODE_ENV=production node -r dotenv/config app.js",
+    "debug:express": "cross-env DEBUG=express:* NODE_ENV=development nodemon -r dotenv/config app.js",
+    "prettier": "prettier --write \"**/*.js\"",
+    "lint": "eslint ."
+  },
+  "author": "Shirinov Rustam <d9rs.dev@gmail.com> (https://github.com/d9rs)",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^4.0.0",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "express-session": "^1.17.0",
+    "helmet": "^3.21.3",
+    "log4js": "^6.3.0",
+    "mysql2": "^2.1.0",
+    "node-migrate": "^0.1.0"
+  },
+  "devDependencies": {
+    "cross-env": "^7.0.2",
+    "eslint": "^7.6.0",
+    "eslint-config-prettier": "^6.11.0",
+    "eslint-plugin-prettier": "^3.1.4",
+    "nodemon": "^2.0.4",
+    "prettier": "2.0.5"
+  }
+}
