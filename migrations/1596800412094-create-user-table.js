@@ -16,6 +16,6 @@ module.exports.up = async () => {
 
 module.exports.down = async () => {
     return db.query(`
-        DROP TABLE \`user\`;
+        DROP TABLE IF EXISTS \`user\`;
     `);
 };
