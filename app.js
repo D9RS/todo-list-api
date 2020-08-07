@@ -15,7 +15,6 @@ const { unhandledRejection, uncaughtException } = require('./core/errorHandlers'
 
 const app = express();
 
-app.set('views', path.resolve(__dirname, './views'));
 app.set('env', env);
 
 app.use(helmet());
