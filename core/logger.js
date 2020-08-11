@@ -28,9 +28,12 @@ log4js.configure({
     },
     categories: {
         default: { appenders: ['out', 'app', 'errors'], level: defaultLevel },
+        production: { appenders: ['out', 'app', 'errors'], level: 'info' },
+        development: { appenders: ['out', 'app', 'errors'], level: 'debug' },
+        test: { appenders: ['app', 'errors'], level: 'trace' },
     },
 });
 
-const logger = log4js.getLogger();
+const logger = log4js.getLogger(env);
 
 module.exports = logger;
