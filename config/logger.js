@@ -1,7 +1,7 @@
 module.exports = {
     logPath: './logs',
-    app: {
-        filename: 'app',
+    info: {
+        filename: 'info',
         maxLogSize: 10485760,
         numBackups: 5,
     },
@@ -10,4 +10,9 @@ module.exports = {
         maxLogSize: 10485760,
         numBackups: 3,
     },
+    debug: {
+        filename: 'debug',
+        maxLogSize: 10485760,
+        numBackups: 5,
+    }
 };

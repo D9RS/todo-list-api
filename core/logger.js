@@ -1,36 +1,54 @@
 const log4js = require('log4js');
 const { resolve } = require('path');
 const { env } = require('../config/app');
-const { app, errors, logPath } = require('../config/logger');
+const { info, debug, errors, logPath } = require('../config/logger');
 
-const defaultLevel = env === 'production' ? 'info' : 'debug';
+const defaultLevel = env === 'production' ? 'info' : 'trace';
 
 log4js.configure({
     appenders: {
         out: { type: 'stdout' },
-        app: {
+        infoFile: {
             type: 'file',
-            filename: resolve(process.cwd(), logPath, `${app.filename}.${env}.log`),
-            maxLogSize: app.maxLogSize,
-            numBackups: app.numBackups,
+            filename: resolve(process.cwd(), logPath, env, `${info.filename}.log`),
+            maxLogSize: info.maxLogSize,
+            numBackups: info.numBackups,
         },
         errorFile: {
             type: 'file',
-            filename: resolve(process.cwd(), logPath, `${errors.filename}.${env}.log`),
+            filename: resolve(process.cwd(), logPath, env, `${errors.filename}.log`),
             maxLogSize: errors.maxLogSize,
             numBackups: errors.numBackups,
+        },
+        debugFile: {
+            type: 'file',
+            filename: resolve(process.cwd(), logPath, env, `${debug.filename}.log`),
+            maxLogSize: debug.maxLogSize,
+            numBackups: debug.numBackups,
+        },
+        info: {
+            type: 'logLevelFilter',
+            level: 'INFO',
+            maxLevel: 'WARN',
+            appender: 'infoFile',
         },
         errors: {
             type: 'logLevelFilter',
             level: 'ERROR',
             appender: 'errorFile',
         },
+        debug: {
+            type: 'logLevelFilter',
+            level: 'TRACE',
+            maxLevel: 'DEBUG',
+            appender: 'debugFile',
+        }
     },
     categories: {
-        default: { appenders: ['out', 'app', 'errors'], level: defaultLevel },
-        production: { appenders: ['out', 'app', 'errors'], level: 'info' },
-        development: { appenders: ['out', 'app', 'errors'], level: 'debug' },
-        test: { appenders: ['app', 'errors'], level: 'trace' },
+        default: { appenders: ['out', 'info', 'errors', 'debug'], level: defaultLevel },
+        production: { appenders: ['out', 'info', 'errors'], level: 'info' },
+        development: { appenders: ['out', 'info', 'errors', 'debug'], level: 'trace' },
+        test: { appenders: ['info', 'errors', 'debug'], level: 'trace' },
     },
 });
 
