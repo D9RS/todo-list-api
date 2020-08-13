@@ -2,11 +2,11 @@
   "name": "todo-app",
   "version": "1.0.0",
   "description": "",
-  "main": "app.js",
+  "main": "index.js",
   "scripts": {
-    "start:dev": "cross-env NODE_ENV=development nodemon -r dotenv/config app.js",
-    "start:prod": "cross-env NODE_ENV=production node -r dotenv/config app.js",
-    "debug:express": "cross-env DEBUG=express:* NODE_ENV=development nodemon -r dotenv/config app.js",
+    "start:dev": "cross-env NODE_ENV=development nodemon -r dotenv/config",
+    "start:prod": "cross-env NODE_ENV=production node -r dotenv/config",
+    "debug:express": "cross-env DEBUG=express:* NODE_ENV=development nodemon -r dotenv/config",
     "prettier": "prettier --write \"**/*.js\"",
     "lint": "eslint ."
   },
