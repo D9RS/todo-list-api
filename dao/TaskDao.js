@@ -24,7 +24,7 @@ exports.insert = async (text, userId) => {
 
 exports.update = async (text, isDone, id, userId) => {
     try {
-        const sql = 'UPDATE task SET text = ?, is_done = ? WHERE id = ? AND user_id = ?';
+        const sql = 'UPDATE task SET text = ?, isDone = ? WHERE id = ? AND user_id = ?';
         const [result] = await db.query(sql, [text, isDone, id, userId]);
         return result;
     } catch (error) {

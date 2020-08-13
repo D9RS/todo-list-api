@@ -9,7 +9,7 @@ module.exports.up = async () => {
         CREATE TABLE \`task\` (
             \`id\` SERIAL NOT NULL PRIMARY KEY,
             \`text\` VARCHAR(1024) NOT NULL,
-            \`is_done\` BOOLEAN NOT NULL DEFAULT 0,
+            \`isDone\` BOOLEAN NOT NULL DEFAULT 0,
             \`user_id\` BIGINT UNSIGNED NOT NULL,
             FOREIGN KEY (\`user_id\`) REFERENCES user(\`id\`) ON DELETE CASCADE
         );
