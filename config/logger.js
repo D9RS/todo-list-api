@@ -14,5 +14,5 @@ module.exports = {
         filename: 'debug',
         maxLogSize: 10485760,
         numBackups: 5,
-    }
+    },
 };

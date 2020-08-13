@@ -42,7 +42,7 @@ log4js.configure({
             level: 'TRACE',
             maxLevel: 'DEBUG',
             appender: 'debugFile',
-        }
+        },
     },
     categories: {
         default: { appenders: ['out', 'info', 'errors', 'debug'], level: defaultLevel },
