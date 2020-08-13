@@ -1,3 +1,5 @@
+require('dotenv-flow').config();
+
 const express = require('express');
 const expressSession = require('express-session');
 const helmet = require('helmet');

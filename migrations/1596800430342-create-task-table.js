@@ -1,12 +1,12 @@
 'use strict';
 
-require('dotenv').config();
+require('dotenv-flow').config();
 
 const db = require('../core/database');
 
 module.exports.up = async () => {
     return db.query(`
-        CREATE TABLE \`task\` (
+        CREATE TABLE IF NOT EXISTS \`task\` (
             \`id\` SERIAL NOT NULL PRIMARY KEY,
             \`text\` VARCHAR(1024) NOT NULL,
             \`isDone\` BOOLEAN NOT NULL DEFAULT 0,

@@ -25,3 +25,14 @@ Implementing an simple API for a to-do list using `Node.js` + `Express` + `MySQL
     # For production
     npm run start:prod
     ```
+
+## Tests
+In order to use the test database, you need to create a file `.env.test`, in which you need to specify data for tests.
+
+Currently, the `node-migrate` library does not support creating different `.migrate` files for different databases, so after the tests you will have to reset and run all migrations of the original database back again using the `npm run migrate:reset` command.
+
+Run the following commands to run the tests
+```
+npm install
+npm test
+```

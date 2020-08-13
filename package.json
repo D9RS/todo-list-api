@@ -4,17 +4,20 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start:dev": "cross-env NODE_ENV=development nodemon -r dotenv/config",
-    "start:prod": "cross-env NODE_ENV=production node -r dotenv/config",
-    "debug:express": "cross-env DEBUG=express:* NODE_ENV=development nodemon -r dotenv/config",
+    "start:dev": "cross-env NODE_ENV=development nodemon",
+    "start:prod": "cross-env NODE_ENV=production node",
+    "debug:express": "cross-env DEBUG=express:* NODE_ENV=development nodemon",
     "prettier": "prettier --write \"**/*.js\"",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "test": "cross-env NODE_ENV=test jest --detectOpenHandles --forceExit",
+    "migrate:reset": "npx migrate down && npx migrate up",
+    "pretest": "cross-env NODE_ENV=test npm run migrate:reset"
   },
   "author": "Shirinov Rustam <d9rs.dev@gmail.com> (https://github.com/d9rs)",
   "license": "ISC",
   "dependencies": {
     "bcrypt": "^4.0.0",
-    "dotenv": "^8.2.0",
+    "dotenv-flow": "^3.2.0",
     "express": "^4.17.1",
     "express-session": "^1.17.0",
     "helmet": "^3.21.3",
@@ -27,7 +30,10 @@
     "eslint": "^7.6.0",
     "eslint-config-prettier": "^6.11.0",
     "eslint-plugin-prettier": "^3.1.4",
+    "faker": "^4.1.0",
+    "jest": "^26.2.2",
     "nodemon": "^2.0.4",
-    "prettier": "2.0.5"
+    "prettier": "2.0.5",
+    "supertest": "^4.0.2"
   }
 }
