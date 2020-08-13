@@ -26,7 +26,7 @@ exports.signUp = async (req, res) => {
             return res.status(400).json({ error: 'Данный логин уже занят' });
         }
 
-        const hash = await bcrypt.hash(password, saltRounds);
+        const hash = await bcrypt.hash(password.toString(), saltRounds);
         const result = await UserDao.insert(login, hash);
 
         if (!result.affectedRows) {
