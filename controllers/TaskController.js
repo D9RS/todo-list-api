@@ -69,7 +69,7 @@ exports.update = async (req, res) => {
     }
 };
 
-exports.remove = async (req, res) => {
+exports.delete = async (req, res) => {
     try {
         const result = await TaskDao.delete(req.params.id, req.session.userId);
         if (!result.affectedRows) {
