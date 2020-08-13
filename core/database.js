@@ -1,4 +1,5 @@
 const mysql = require('mysql2');
+const log4js = require('log4js');
 const database = require('../config/database');
 const logger = require('./logger');
 
@@ -10,7 +11,7 @@ promisePool
     .then(() => logger.info('Successfully connected to the database!'))
     .catch((error) => {
         logger.fatal(error);
-        process.exit(1);
+        log4js.shutdown(() => process.exit(1));
     });
 
 module.exports = promisePool;
