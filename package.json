@@ -2,7 +2,7 @@
   "name": "todo-app",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
     "start:dev": "cross-env NODE_ENV=development nodemon -r dotenv/config",
     "start:prod": "cross-env NODE_ENV=production node -r dotenv/config",
