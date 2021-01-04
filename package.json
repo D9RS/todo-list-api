@@ -8,7 +8,10 @@
     "start:prod": "cross-env NODE_ENV=production node -r dotenv/config",
     "debug:express": "cross-env DEBUG=express:* NODE_ENV=development nodemon -r dotenv/config",
     "prettier": "prettier --write \"**/*.js\"",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "migrate:up": "migrate up",
+    "migrate:down": "migrate down",
+    "migrate:reset": "migrate down && migrate up"
   },
   "author": "Shirinov Rustam <d9rs.dev@gmail.com> (https://github.com/d9rs)",
   "license": "ISC",
@@ -19,14 +22,14 @@
     "express-session": "^1.17.0",
     "helmet": "^3.21.3",
     "log4js": "^6.3.0",
-    "mysql2": "^2.1.0",
-    "node-migrate": "^0.1.0"
+    "mysql2": "^2.1.0"
   },
   "devDependencies": {
     "cross-env": "^7.0.2",
     "eslint": "^7.6.0",
     "eslint-config-prettier": "^6.11.0",
     "eslint-plugin-prettier": "^3.1.4",
+    "migrate": "^1.7.0",
     "nodemon": "^2.0.4",
     "prettier": "2.0.5"
   }
